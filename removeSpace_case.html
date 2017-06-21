@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>删除空白节点经典案例</title>
+		<script src="removeSpace.js"></script>
+		<script>
+		window.onload = function(){
+			var oUl = document.getElementsByTagName("ul")[0];
+			var oA = document.getElementsByTagName("a");
+			var oLi = document.getElementsByTagName("li");
+			//删除ul中所有的空白节点
+			removeSpace(oUl);
+			//删除li中所有的空白节点
+			for(var i = 0;i < oLi.length;i ++){
+				removeSpace(oLi[i]);
+			}
+			//给每一个a加上鼠标点击事件
+			var arrNum = [];
+			for(i = 0;i < oA.length;i ++){
+				
+				oA[i].onclick = function(){
+						arrNum.push(this.previousSibling.nodeValue);
+						this.parentNode.parentNode.removeChild(this.parentNode);
+						if(!oUl.childNodes.length){
+							document.write(arrNum);
+					}
+				}
+			}
+		}
+		</script>
+	</head>
+
+	<body>
+		<ul>
+			<li>
+				1
+				<a href="javascript:;">删除</a>
+			</li>
+			<li>
+				2
+				<a href="javascript:;">删除</a>
+			</li>
+			<li>
+				3
+				<a href="javascript:;">删除</a>
+			</li>
+			<li>
+				4
+				<a href="javascript:;">删除</a>
+			</li>
+		</ul>
+	</body>
+</html>
